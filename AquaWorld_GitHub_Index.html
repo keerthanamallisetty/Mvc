@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AquaWorld Aquarium Shop</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f4fbff}
+header{background:#0077b6;color:#fff;text-align:center;padding:20px}
+.container{max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+input,textarea,select{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:5px}
+button{background:#0077b6;color:#fff;border:none;padding:12px 20px;border-radius:5px;cursor:pointer}
+.error{color:red;font-size:14px}
+.success{color:green;font-weight:bold}
+</style>
+</head>
+<body>
+<header>
+<h1>AquaWorld Aquarium Shop</h1>
+<p>Fish • Aquatic Plants • Live Food</p>
+</header>
+
+<div class="container">
+<h2>Place an Order</h2>
+
+<form id="orderForm">
+<input type="text" id="name" placeholder="Full Name">
+<div class="error" id="nameError"></div>
+
+<input type="tel" id="mobile" placeholder="10-digit Mobile Number">
+<div class="error" id="mobileError"></div>
+
+<input type="email" id="email" placeholder="Email Address">
+<div class="error" id="emailError"></div>
+
+<textarea id="address" placeholder="Delivery Address"></textarea>
+<div class="error" id="addressError"></div>
+
+<select id="product">
+<option value="">Select Product</option>
+<option>Gold Fish</option>
+<option>Betta Fish</option>
+<option>Aquatic Plant</option>
+<option>Live Fish Food</option>
+</select>
+<div class="error" id="productError"></div>
+
+<input type="number" id="quantity" min="1" value="1">
+
+<button type="submit">Submit Order</button>
+</form>
+
+<p id="result"></p>
+
+<hr>
+
+<h2>Track Order</h2>
+<form id="trackForm">
+<input type="text" id="orderId" placeholder="Order ID">
+<input type="tel" id="trackMobile" placeholder="Mobile Number">
+<button type="submit">Track</button>
+</form>
+<p id="trackResult"></p>
+</div>
+
+<script>
+document.getElementById("orderForm").addEventListener("submit",function(e){
+e.preventDefault();
+document.querySelectorAll(".error").forEach(x=>x.innerHTML="");
+
+let valid=true;
+let name=document.getElementById("name").value.trim();
+let mobile=document.getElementById("mobile").value.trim();
+let email=document.getElementById("email").value.trim();
+let address=document.getElementById("address").value.trim();
+let product=document.getElementById("product").value;
+
+if(name.length<3){document.getElementById("nameError").innerHTML="Enter valid name";valid=false;}
+if(!/^[0-9]{10}$/.test(mobile)){document.getElementById("mobileError").innerHTML="Enter valid mobile";valid=false;}
+if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById("emailError").innerHTML="Enter valid email";valid=false;}
+if(address.length<10){document.getElementById("addressError").innerHTML="Address too short";valid=false;}
+if(product===""){document.getElementById("productError").innerHTML="Select a product";valid=false;}
+
+if(valid){
+let orderId="AQ"+Date.now();
+document.getElementById("result").className="success";
+document.getElementById("result").innerHTML="Order submitted successfully. Order ID: "+orderId+"<br>Connect Google Apps Script URL to store data in Google Sheets.";
+}
+});
+
+document.getElementById("trackForm").addEventListener("submit",function(e){
+e.preventDefault();
+const orders={AQ1001:"Confirmed",AQ1002:"Packing",AQ1003:"Shipped"};
+let id=document.getElementById("orderId").value.trim();
+document.getElementById("trackResult").innerHTML=orders[id]?"Status: "+orders[id]:"Order not found";
+});
+</script>
+</body>
+</html>
