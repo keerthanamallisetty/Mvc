@@ -1,39 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AquaWorld Aquarium Shop</title>
-<style>
-body{font-family:Arial,sans-serif;margin:0;background:#f4fbff}
-header{background:#0077b6;color:#fff;text-align:center;padding:20px}
-nav a{color:#fff;margin:0 10px;text-decoration:none}
-.hero{padding:60px;text-align:center;background:#caf0f8}
-.products{padding:30px}
-.card{background:#fff;padding:15px;margin:10px;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,.1)}
-footer{background:#0077b6;color:#fff;text-align:center;padding:10px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java MVC Greeting App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-<h1>AquaWorld Aquarium Shop</h1>
-<nav>
-<a href="#">Home</a>
-<a href="#">Fish</a>
-<a href="#">Plants</a>
-<a href="#">Live Food</a>
-<a href="#">Contact</a>
-</nav>
-</header>
-<section class="hero">
-<h2>Fish • Water Plants • Live Food</h2>
-<p>Your one-stop aquarium store.</p>
-</section>
-<section class="products">
-<div class="card"><h3>Gold Fish</h3><p>Healthy aquarium fish.</p></div>
-<div class="card"><h3>Aquatic Plants</h3><p>Fresh water plants.</p></div>
-<div class="card"><h3>Live Fish Food</h3><p>Nutritious live food.</p></div>
-</section>
-<footer>© 2026 AquaWorld Aquarium Shop</footer>
+    <main class="card">
+        <h1>Java MVC Application</h1>
+        <p>Simple Spring MVC demonstration</p>
+
+        <input id="name" type="text" placeholder="Enter your name">
+        <button id="greetButton">Greet Me</button>
+
+        <h2 id="result">Your greeting will appear here</h2>
+
+        <div class="flow">
+            <span>View</span>
+            <span>→</span>
+            <span>Controller</span>
+            <span>→</span>
+            <span>Model</span>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
